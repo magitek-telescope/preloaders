@@ -1,5 +1,5 @@
 <template>
-  <section class="wrapper">
+  <section class="wrapper" :class="{'is-modal': status =='show'}">
     <div>
       <h1 class="title">
         preloaders
@@ -14,15 +14,24 @@
           <iframe :src="`/loaders/${loader}`"></iframe>
           <h1 class="card-title">
             <span>{{loader}}</span>
-            <span class="card-show">show source</span>
+            <span class="card-show" @click="handleClick(loader)">show source</span>
           </h1>
         </article>
       </div>
+    </div>
+
+    <div class="modal" v-if="status == 'show'">
+      <div class="modal-content">
+        <code><pre>{{source}}</pre></code>
+      </div>
+      <div class="modal-background" @click="handleHide"></div>
     </div>
   </section>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -31,7 +40,25 @@ export default {
         'ellipses02',
         'circles01',
         'ellipses01'
-      ]
+      ],
+      status: 'wait',
+      source: ''
+    }
+  },
+  methods: {
+    async handleClick (loader) {
+      try {
+        this.status = 'loading'
+        const { data: html } = await axios.get(`/loaders/${loader}`)
+        this.source = html.match(/(<body>)[\s\S]*?(<\/body>)/)[0].replace(`<body>\n`, '').replace('</body>', '')
+        this.status = 'show'
+      } catch (e) {
+        this.status = 'wait'
+        alert('Error.')
+      }
+    },
+    handleHide () {
+      this.status = 'wait'
     }
   }
 }
@@ -44,6 +71,11 @@ export default {
   justify-content: center;
   text-align: center;
   padding: 30px;
+}
+
+.wrapper.is-modal{
+  height: 100vh;
+  overflow: hidden;
 }
 
 .title {
@@ -109,4 +141,51 @@ a,
 * a{
   color: #77CFF7;
 }
+
+.modal{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content{
+  position: static;
+  width: 960px;
+  height: 90vh;
+  overflow: scroll;
+
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 100;
+  text-align: left;
+}
+
+.modal-content code,
+.modal-content pre{
+  font-family: Monaco;
+}
+
+.modal-content pre {
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  display: block;
+}
+
+.modal-background{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
 </style>
