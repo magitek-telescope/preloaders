@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ripple and Heart</title>
+</head>
+<body>
+
+  <style>
+  html, body, .cover{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: hsl(180, 80%, 40%);
+  }
+
+  .loading{
+    width:100px;
+    height:100px;
+    position: absolute;
+  }
+
+  .loading2{
+    width:100px;
+    height:100px;
+    position: absolute;
+  }
+
+  .loading:before,
+  .loading:after,
+  .loading2:before,
+  .loading2:after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: solid 5px #fff;
+    content: "";
+    border-radius: 50%;
+  }
+
+  .loading:before{
+    border-top: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+    animation: anim1 1s infinite linear;
+  }
+  .loading:after{
+    left: -50px;
+    top: -50px;
+    width: 200px;
+    height: 200px;
+    border-left: solid 5px transparent;
+    border-right: solid 5px transparent;
+    animation: anim2 1s infinite linear;
+  }
+
+  .loading2:before{
+    left: -25px;
+    top: -25px;
+    width: 150px;
+    height: 150px;
+    border-top: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+    animation: anim3 2s infinite linear;
+  }
+
+  .loading2:after{
+    left: -100px;
+    top: -100px;
+    width: 300px;
+    height: 300px;
+    border-top: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+    animation: anim2 2s infinite linear;
+  }
+
+
+
+  @keyframes anim1{
+    0%{transform:rotate(0deg);}
+  /*   50%{transform:rotate(180deg);} */
+    100%{transform:rotate(-360deg);}
+  }
+  @keyframes anim2{
+    0%{transform:rotate(0deg);}
+  /*   50%{transform:rotate(180deg);} */
+    100%{transform:rotate(360deg);}
+  }
+
+  @keyframes anim3{
+    0%{transform:rotate(45deg);}
+  /*   50%{transform:rotate(180deg);} */
+    100%{transform:rotate(405deg);}
+  }
+  </style>
+  <div class="cover">
+    <div class="loading"></div>
+    <div class="loading2"></div>
+  </div>
+</body>
+</html>
