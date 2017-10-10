@@ -27,6 +27,7 @@ export default {
   data () {
     return {
       loaders: [
+        'rippleandheart',
         'ellipses02',
         'circles01',
         'ellipses01'

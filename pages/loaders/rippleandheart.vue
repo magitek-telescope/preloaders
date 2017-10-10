@@ -1,0 +1,79 @@
+<template>
+  <div class="cover">
+    <div class="loading"></div>
+  </div>
+</template>
+
+<style scoped>
+html, body, .cover{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #f06a6a;
+}
+
+.loading:before,
+.loading:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loading:before {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: solid 5px #fff;
+  background-size: cover;
+  background-image: url('https://github.com/potato4d.png');
+  z-index: 1000;
+  animation: heart 1.9s cubic-bezier(0.86, 0, 0.07, 1) 0.75s infinite;
+}
+
+.loading:after {
+  width: 0;
+  height: 0;
+  animation: anim1 1.9s ease-in-out infinite;
+  opacity: 1;
+  transition: opacity 0.3s;
+  border: solid 1px #fff;
+}
+
+@keyframes heart {
+  0% {
+    transform: scale(1);
+  }
+
+  1% {
+    transform: scale(1.025);
+  }
+
+  35% {
+    transform: scale(1);
+  }
+}
+
+@keyframes anim1 {
+  0%{
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    border: solid 2px rgba(255, 255, 255, 1.0);
+  }
+
+  100%{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: solid 2px rgba(255, 255, 255, 0.0);
+  }
+}
+</style>
