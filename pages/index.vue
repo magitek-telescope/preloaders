@@ -1,6 +1,6 @@
 <template>
   <section class="wrapper" :class="{'is-modal': status =='show'}">
-    <div>
+    <div class="main">
       <h1 class="title">
         preloaders
       </h1>
@@ -65,12 +65,16 @@ export default {
 </script>
 
 <style>
-.wrapper {
+.wrapper{
   min-height: 100vh;
   display: flex;
   justify-content: center;
   text-align: center;
   padding: 30px;
+}
+
+.main{
+  width: 100%;
 }
 
 .wrapper.is-modal{
@@ -102,10 +106,13 @@ export default {
   align-items: stretch;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .card {
   width: 400px;
+  max-width: 100%;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.093);
@@ -116,6 +123,23 @@ export default {
   width: 100%;
   height: 300px;
   border: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .wrapper{
+    padding: 10px;
+  }
+  .container {
+    padding: 0;
+  }
+  .title{
+    font-size: 60px;
+  }
+  .card iframe {
+    width: calc(100vw - 20px);
+    height: calc(75vw);
+  }
 }
 
 .card .card-title {
