@@ -10,10 +10,10 @@
       </p>
 
       <div class="container">
-        <article class="card" v-for="number in 6">
-          <iframe src="/loaders/ellipses"></iframe>
+        <article class="card" v-for="loader in loaders">
+          <iframe :src="`/loaders/${loader}`"></iframe>
           <h1 class="card-title">
-            <span>ellipses</span>
+            <span>{{loader}}</span>
             <span class="card-show">show source</span>
           </h1>
         </article>
@@ -23,6 +23,17 @@
 </template>
 
 <script>
+export default {
+  data () {
+    return {
+      loaders: [
+        'ellipses02',
+        'circles01',
+        'ellipses01'
+      ]
+    }
+  }
+}
 </script>
 
 <style>
