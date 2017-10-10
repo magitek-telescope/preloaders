@@ -1,58 +1,100 @@
 <template>
-  <section class="container">
+  <section class="wrapper">
     <div>
-      <logo/>
       <h1 class="title">
         preloaders
       </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+      <p class="description">
+        My preloader collection using CSS Animation.<br>
+        by <a href="https://github.com/potato4d">@potato4d</a>
+      </p>
+
+      <div class="container">
+        <article class="card" v-for="number in 6">
+          <iframe src="/loaders/ellipses"></iframe>
+          <h1 class="card-title">
+            <span>ellipses</span>
+            <span class="card-show">show source</span>
+          </h1>
+        </article>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo
-  }
-}
 </script>
 
 <style>
-.container {
+.wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
+  padding: 30px;
 }
 
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 80px;
   color: #35495e;
   letter-spacing: 1px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.description {
+  margin: 10px 0 30px;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #35495e;
 }
 
-.links {
-  padding-top: 15px;
+.container {
+  display: flex;
+  width: 1280px;
+  padding: 10px;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 400px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.093);
+  margin-bottom: 30px;
+}
+
+.card iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
+.card .card-title {
+  color: #666;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
+}
+
+.card .card-show{
+  font-size: 13px;
+  color: #77CFF7;
+  cursor: pointer;
+}
+
+.card .card-show:hover{
+  text-decoration: underline;
+}
+
+a,
+* a{
+  color: #77CFF7;
 }
 </style>

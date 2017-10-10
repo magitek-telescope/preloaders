@@ -1,0 +1,58 @@
+<template>
+  <div class="cover">
+    <div class="loading"></div>
+  </div>
+</template>
+
+<style scoped>
+html,body{
+  margin: 0;
+  padding: 0;
+}
+.cover{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #A2DEF8;
+}
+
+.loading{
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.loading:before{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.5);
+  content: "";
+  border-radius: 50%;
+  animation: anim1 2s infinite;
+}
+
+.loading:after{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.5);
+  content: "";
+  border-radius: 50%;
+  animation: anim1 2s -1s infinite;
+}
+
+@keyframes anim1{
+    0%{transform: scale(0)}
+   50%{transform: scale(2.5)}
+  100%{transform: scale(0)}
+}
+</style>
