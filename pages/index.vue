@@ -39,7 +39,9 @@ export default {
         'rippleandheart',
         'ellipses02',
         'circles01',
-        'ellipses01'
+        'ellipses01',
+        'panel01',
+        'neon'
       ],
       status: 'wait',
       source: ''
