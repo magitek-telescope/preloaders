@@ -11,7 +11,7 @@
 
       <div class="container">
         <article class="card" v-for="loader in loaders">
-          <iframe :src="`loaders/${loader}`"></iframe>
+          <iframe :src="`/loaders/${loader}/`"></iframe>
           <h1 class="card-title">
             <span>{{loader}}</span>
             <span class="card-show" @click="handleClick(loader)">show source</span>
@@ -51,7 +51,7 @@ export default {
     async handleClick (loader) {
       try {
         this.status = 'loading'
-        const { data: html } = await axios.get(`loaders/${loader}`)
+        const { data: html } = await axios.get(`/loaders/${loader}/`)
         this.source = html.match(/(<body>)[\s\S]*?(<\/body>)/)[0].replace(`<body>\n`, '').replace('</body>', '')
         this.status = 'show'
       } catch (e) {
