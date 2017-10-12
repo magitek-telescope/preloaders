@@ -21,6 +21,9 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: [
+    { src: '~plugins/ga.js', ssr: false }
+  ],
   build: {
     /*
     ** Run ESLint on save
