@@ -1,7 +1,4 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   srcDir: './app',
   head: {
     title: 'preloaders',
@@ -15,14 +12,14 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress bar color
-  */
   loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
-  plugins: [
-    { src: '~plugins/ga.js', ssr: false }
+  modules: [
+    '@nuxtjs/pwa',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: process.env.GA_ID || 'UA-12301-2'
+      }
+    ]
   ]
 }
