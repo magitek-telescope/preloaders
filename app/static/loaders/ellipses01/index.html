@@ -20,15 +20,14 @@
     margin: 0;
     padding: 0;
     background: #A2DEF8;
+    overflow: hidden;
   }
-
   .loading{
     width: 50px;
     height: 50px;
     position: relative;
   }
-
-  .loading:before{
+  .loading::before, .loading::after {
     position: absolute;
     left: 0;
     top: 0;
@@ -37,30 +36,19 @@
     background: rgba(255,255,255,0.5);
     content: "";
     border-radius: 50%;
+  }
+  .loading::before{
     animation: anim1 2s infinite;
   }
-
-  .loading:after{
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255,255,255,0.5);
-    content: "";
-    border-radius: 50%;
+  .loading::after{
     animation: anim1 2s -1s infinite;
   }
-
   @keyframes anim1{
       0%{transform: scale(0)}
      50%{transform: scale(2.5)}
     100%{transform: scale(0)}
   }
   </style>
-
-  <div class="cover">
-    <div class="loading"></div>
-  </div>
+  <div class="cover"><div class="loading"></div></div>
 </body>
 </html>

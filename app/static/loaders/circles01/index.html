@@ -16,20 +16,13 @@
     margin: 0;
     padding: 0;
     background: hsl(180, 80%, 40%);
+    overflow: hidden;
   }
-
-  .loading{
+  .loading, .loading2 {
     width:100px;
     height:100px;
     position: absolute;
   }
-
-  .loading2{
-    width:100px;
-    height:100px;
-    position: absolute;
-  }
-
   .loading:before,
   .loading:after,
   .loading2:before,
@@ -43,7 +36,6 @@
     content: "";
     border-radius: 50%;
   }
-
   .loading:before{
     border-top: solid 5px transparent;
     border-bottom: solid 5px transparent;
@@ -58,7 +50,6 @@
     border-right: solid 5px transparent;
     animation: anim2 1s infinite linear;
   }
-
   .loading2:before{
     left: -25px;
     top: -25px;
@@ -68,7 +59,6 @@
     border-bottom: solid 5px transparent;
     animation: anim3 2s infinite linear;
   }
-
   .loading2:after{
     left: -100px;
     top: -100px;
@@ -78,29 +68,19 @@
     border-bottom: solid 5px transparent;
     animation: anim2 2s infinite linear;
   }
-
-
-
   @keyframes anim1{
     0%{transform:rotate(0deg);}
-  /*   50%{transform:rotate(180deg);} */
     100%{transform:rotate(-360deg);}
   }
   @keyframes anim2{
     0%{transform:rotate(0deg);}
-  /*   50%{transform:rotate(180deg);} */
     100%{transform:rotate(360deg);}
   }
-
   @keyframes anim3{
     0%{transform:rotate(45deg);}
-  /*   50%{transform:rotate(180deg);} */
     100%{transform:rotate(405deg);}
   }
   </style>
-  <div class="cover">
-    <div class="loading"></div>
-    <div class="loading2"></div>
-  </div>
+  <div class="cover"><div class="loading"></div><div class="loading2"></div></div>
 </body>
 </html>

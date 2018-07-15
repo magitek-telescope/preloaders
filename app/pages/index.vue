@@ -1,28 +1,30 @@
 <template>
-  <section class="wrapper" :class="{'is-modal': status =='show'}">
+  <section
+    class="wrapper"
+    :class="{
+      'is-modal': isShowModal
+    }"
+  >
     <div class="main">
       <h1 class="title">
         preloaders
       </h1>
+
       <p class="description">
         My preloader collection using CSS Animation.<br>
         by <a href="https://github.com/potato4d">@potato4d</a>
       </p>
 
       <div class="container">
-        <article class="card" v-for="loader in loaders">
-          <iframe :src="`/loaders/${loader}/`"></iframe>
-          <h1 class="card-title">
-            <span>{{loader}}</span>
-            <span class="card-show" @click="handleClick(loader)">show source</span>
-          </h1>
-        </article>
+        <AppLoader @click="handleClick" v-for="loader in loaders" :key="loader" :loader="loader" />
       </div>
     </div>
 
-    <div class="modal" v-if="status == 'show'">
+    <div class="modal" v-if="isShowModal">
       <div class="modal-content">
-        <code><pre>{{source}}</pre></code>
+        <code>
+          <pre>{{source}}</pre>
+        </code>
       </div>
       <div class="modal-background" @click="handleHide"></div>
     </div>
@@ -31,8 +33,12 @@
 
 <script>
 import axios from 'axios'
+import AppLoader from '~/components/AppLoader.vue'
 
 export default {
+  components: {
+    AppLoader
+  },
   data () {
     return {
       loaders: [
@@ -47,12 +53,19 @@ export default {
       source: ''
     }
   },
+  computed: {
+    isShowModal() {
+      return this.status =='show'
+    }
+  },
   methods: {
     async handleClick (loader) {
       try {
         this.status = 'loading'
         const { data: html } = await axios.get(`/loaders/${loader}/`)
-        this.source = html.match(/(<body>)[\s\S]*?(<\/body>)/)[0].replace(`<body>\n`, '').replace('</body>', '')
+        this.source = html.match(/(<body>)[\s\S]*?(<\/body>)/)[0]
+                          .replace(`<body>\n`, '')
+                          .replace('</body>', '')
         this.status = 'show'
       } catch (e) {
         this.status = 'wait'
@@ -79,7 +92,7 @@ export default {
   width: 100%;
 }
 
-.wrapper.is-modal{
+.wrapper.is-modal {
   height: 100vh;
   overflow: hidden;
 }

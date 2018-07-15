@@ -16,8 +16,8 @@
     margin: 0;
     padding: 0;
     background: #f06a6a;
+    overflow: hidden;
   }
-
   .loading:before,
   .loading:after {
     content: "";
@@ -28,18 +28,16 @@
     right: 0;
     margin: auto;
   }
-
   .loading:before {
     width: 140px;
     height: 140px;
     border-radius: 50%;
     border: solid 5px #fff;
     background-size: cover;
-    background-image: url('https://github.com/potato4d.png');
+    background-image: url('https://img.esa.io/uploads/production/attachments/4699/2018/07/15/11203/6d663ebe-2eab-406f-be2a-a0d0fe38aa1b.jpg');
     z-index: 1000;
     animation: heart 1.9s cubic-bezier(0.86, 0, 0.07, 1) 0.75s infinite;
   }
-
   .loading:after {
     width: 0;
     height: 0;
@@ -48,21 +46,11 @@
     transition: opacity 0.3s;
     border: solid 1px #fff;
   }
-
   @keyframes heart {
-    0% {
-      transform: scale(1);
-    }
-
-    1% {
-      transform: scale(1.025);
-    }
-
-    35% {
-      transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    1% { transform: scale(1.025); }
+    35% { transform: scale(1); }
   }
-
   @keyframes anim1 {
     0%{
       width: 0;
@@ -70,7 +58,6 @@
       border-radius: 50%;
       border: solid 2px rgba(255, 255, 255, 1.0);
     }
-
     100%{
       width: 300px;
       height: 300px;
@@ -79,8 +66,6 @@
     }
   }
   </style>
-  <div class="cover">
-    <div class="loading"></div>
-  </div>
+  <div class="cover"><div class="loading"></div></div>
 </body>
 </html>

@@ -15,83 +15,64 @@
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: #FDA700
+    background: #FDA700;
+    overflow: hidden;
   }
-
+  .loading, .loading2 {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    overflow: hidden;
+    background-blend-mode: lighten;
+  }
   .loading {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.6);
     animation: anim1 4s infinite ease-in-out;
-    border-radius: 50%;
-    overflow: hidden;
-    background-blend-mode: lighten;
   }
-
   .loading2 {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.6);
     animation: anim2 4s infinite ease-in-out;
-    border-radius: 50%;
-    overflow: hidden;
-    background-blend-mode: lighten;
   }
-
   @keyframes anim1 {
     0% {
       transform: translate(-20px, 0);
       z-index: 100;
     }
-
     25% {
       transform: translate(80px, 0);
     }
-
     50% {
       transform: translate(-20px, 0);
       z-index: 1;
     }
-
     75% {
       transform: translate(80px, 0);
     }
-
     100% {
       transform: translate(-20px, 0);
       z-index: 100;
     }
   }
-
   @keyframes anim2 {
     0% {
       transform: translate(20px, 0);
       z-index: 1;
     }
-
     25% {
       transform: translate(-80px, 0);
     }
-
     50% {
       transform: translate(20px, 0);
       z-index: 100;
     }
-
     75% {
       transform: translate(-80px, 0);
     }
-
     100% {
       transform: translate(20px, 0);
       z-index: 1;
     }
   }
   </style>
-
-  <div class="cover">
-    <div class="loading"></div>
-    <div class="loading2"></div>
-  </div>
+  <div class="cover"><div class="loading"></div><div class="loading2"></div></div>
 </body>
 </html>

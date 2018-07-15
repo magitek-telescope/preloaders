@@ -16,8 +16,8 @@
     margin: 0;
     padding: 0;
     background: #0A2138;
+    overflow: hidden;
   }
-
   .loading {
     width: 200px;
     height: 200px;
@@ -30,7 +30,6 @@
     transform: rotateX(60deg);
     filter: drop-shadow(0 0 300px rgba(26, 209, 253, 1.0));
   }
-
   .loading::before{
     display: block;
     width: 140px;
@@ -40,7 +39,6 @@
     right: 0;
     bottom: 0;
     margin: auto;
-
     border: solid 3px #1AD1FD;
     border-right-color: transparent;
     border-left-color: transparent;
@@ -50,8 +48,6 @@
     position: absolute;
     animation: anim2 1.0s ease infinite;
   }
-
-
   .loading .inner-loading {
     width: 65px;
     height: 65px;
@@ -59,18 +55,12 @@
     border-radius: 50%;
     overflow: hidden;
   }
-
   @keyframes anim2 {
     0% { transform: rotate(0deg); }
     50% { transform: rotate(360deg); }
     100% { transform: rotate(720deg); }
   }
-
   </style>
-  <div class="cover">
-    <div class="loading">
-      <div class="inner-loading"></div>
-    </div>
-  </div>
+  <div class="cover"><div class="loading"><div class="inner-loading"></div></div></div>
 </body>
 </html>
